@@ -1,0 +1,1 @@
+This repository contains my web development journey, starting from scratch once again.
