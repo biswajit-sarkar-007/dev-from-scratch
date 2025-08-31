@@ -1,0 +1,57 @@
+1.why languages ?              c/c++/java  --> 01010
+Ans:   VLC ---> Compiler(convert highlevel language to low level lanaguage) ---> 01010 ---> RAM
+
+[-] write code -> compile code -> Run the code
+
+a.cpp  ->  g++ a.cpp -a temp ->  /temp
+
+
+
+-c,c++ is compiler type language
+-js  is intrepreted type language, can run partially if the error comes later
+
+# static vs dynamic languages :
+c++        |    js 
+more strict| can move faster
+code       |  
+
+
+# single threaded nature of js
+ 
+#simple primitive in js
+1.variables(let,var,const)
+2.datatype(string, bolean,number)
+3.if/else
+4.loop
+
+#complex primitive
+1.array
+2.objects 
+
+*array of object:
+`const arrOfObj = [{
+    firstName: "ram",
+    age:21,
+    isMarried:true
+
+},{
+    firstName: "sam",
+    age:17,
+    isMarried:false
+},
+{
+    firstName: "sita",
+    age:20,
+    isMarried:true
+}]
+`
+
+#function:
+1.abstract out logic for your program
+2.take argument as an input
+3.return value as a output
+*4.fn can take other fn as input - this will called (callbacks)
+  
+#setTimeout
+#setInterval
+
