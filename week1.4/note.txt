@@ -1,0 +1,24 @@
+// loops , functions , callbacks in JS
+
+# loops used for repeated logic in code
+
+
+let ans =0;  <-
+for(let i =0;<- i<=10;<- i++){
+    ans=ans+i;<-
+}
+
+// functions
+
+function sum(a,b){ ->fn decleare 
+    return a+b;
+}
+sum(a,b)  -> fn call
+
+#DRY(Don't Repeat Yourself) fundamental concept in coding
+ 
+
+ // callback function
+  when a function call another function inside a function 
+
+  
