@@ -1,0 +1,15 @@
+# in js string can be perfrom some interesting operations like:
+1.length()
+2.indexOf("target")
+3.lastIndexOf("target)
+4.slice(start, end)
+5.substring(start,end)
+6.replace("target", "replacement")
+7.split(" ")
+8.trim()
+9.toUpperCase()
+10.toLowerCase()
+
+
+# parseInt("42.1px")
+its parse an string to an integer
