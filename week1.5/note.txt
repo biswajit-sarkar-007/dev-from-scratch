@@ -1,0 +1,34 @@
+# Async function vs sync functions
+
+->i.together, one after the other, sequential  
+ii.Only one thing is happeing at a time
+
+->i.opposite of synchronous 
+ii.Happens in parts, Multiple things are context switching with each other 
+
+
+# exmale of some async functions:
+setTimeout, fs.read, Fetch
+
+# anonymous fuction 
+
+# promises
+
+1.pending, 2.resolve , 3.reject
+
+promise its just a class that makes callbacks and async functions slightly more readable.
+
+whenhever u crate it , you need to pass in a function as the first argument which has resolve as the First argument
+
+`let p = new Promise(function(resolve){
+   resolve("hi there )
+});
+
+console.log(p)
+`
+
+- promises are basically a wrapper top of the setTimeout()
+
+
+# async await
+ 
