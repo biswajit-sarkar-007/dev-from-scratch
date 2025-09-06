@@ -1,0 +1,18 @@
+// async fn
+js is default sync function , we used async fn used setTimeout(), fs.readFile()
+
+What is async? - Asynchronous
+1. Your javascript thread doesn’t have access to everything immediately
+2. There are some tasks it needs to wait for
+For example -
+1. Reading a file
+2. Sending a network request
+3. A deliberate timeout
+
+// promises
+What are promises?
+1. Just syntactical sugar
+2. Just a more readable way to write async functions
+
+// callback hell
+
