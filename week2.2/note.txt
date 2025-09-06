@@ -1,0 +1,51 @@
+// Node.js runtime | HTTP
+
+-ECMAScript:i. is a scripting language on which js based
+ii.some rules for js , 
+-JavaScript
+
+ECMAScript(js language written)  ---> v8 engine(compiler of js) ---> js output(result)
+
+# protocol: the way your frontend talk to backend
+
+Things that happen in your browser
+after you fire this request
+ 
+1. Browser parses the URL
+2. Does a DNS Lookup (converts google.com to an IP)
+3. Establishes a connection to the IP (does handshake…)
+What is DNS resolution
+URLs are just like contacts in your phone
+In the end, they map to an IP
+If you ever buy a URL of your own, you will need to point it
+to the IP of your server
+
+
+
+
+
+In the end, its the client throwing some information at a server
+Server doing something with that information
+Server responding back with the final result
+Think of them as functions, where
+1. Arguments are something the client sends
+2. Rather than calling a function using its name, the client uses a URL
+3. Rather than the function body, the server does something with the request
+4. Rather than the function returning a value, the server responds with some data
+
+What are the common methods you can send to your BE server?
+1. GET
+2. POST
+3. PUT
+4. DELETE
+
+What are the common status codes the backend responds with?
+1. 200 - Everything is ok
+2. 404 - Page/route not found
+3. 403 - Authentication issues
+4. 500 - Internal server error
+
+// express is library used to create a http server 
+
+
+
