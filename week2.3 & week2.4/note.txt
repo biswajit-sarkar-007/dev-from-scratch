@@ -1,0 +1,20 @@
+# Bash and terminal commend
+
+# terminal is nothing but another interface to do things on your machine
+
+1.pwd --> to show where user are now path
+2.cd  -->  change the directory
+     i.cd ..
+     ii.cd/Desktop/screenshots 
+3.ls  -->  file explorer
+4.mkdir -->  crerate a new directory
+5.touch  --> create a new file
+6.cat   --> see the content of the file
+7.vi    --> terminal based ide
+8.mv    --> move file   
+9.cp    --> copy file
+10.nvm  --> node version manager
+11.npm  --> node package manager
+12.node  --> js code locally
+13.git
+14.clear
