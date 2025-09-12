@@ -1,0 +1,32 @@
+<html>
+    <script>
+        // debouncing function
+
+        let timeout;
+        function debouncePopulateDiv(){
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){
+                sumFn()
+            }, 1000)
+        }
+         async function sumFn(){
+            let a = document.getElementById("firstInput").value;
+            let b = document.getElementById("secondInput").value;
+
+
+            // backend server call the outout
+           const response = await  fetch("http://localhost:3000/sum/?a=" + a +"&b=" + b);
+           const ans = await response.text();
+           document.getElementById("output").innerHTML = ans;
+            
+          }
+    </script>
+    <body>
+        <input oninput="debouncePopulateDiv()" id="firstInput" type="text" placeholder="enter first number"> <br>
+        <input oninput="debouncePopulateDiv()" id="secondInput" type="text" placeholder="enter second number"><br>
+        <!-- <button onclick="sumFn()">sum of</button> -->
+        <div id="output"></div>
+    </body>
+     
+</html> 
+ 

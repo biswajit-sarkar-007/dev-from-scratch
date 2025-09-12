@@ -1,0 +1,4 @@
+// how to create web application without using react
+// ans is DOM
+// the standrad ESCMA Script does not write the setTimeOut(), fetch(), setInterval(), document . its the Chromse Browser specific so the developer who has been writting the standrad ESMA Script who had writting this fn.
+// make the website dynamic means after some scroll the content of the website is to be change.
