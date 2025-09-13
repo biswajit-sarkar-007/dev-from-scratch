@@ -1,0 +1,30 @@
+#the todos we are created is not ready for production level its not good approach
+
+
+# what id there is a server where these todos are put 
+what if you update a TODO from your mobile app, you will get back new arrays of todos on the frontend
+
+How will you update the DOM then ?
+You only have a addTodo function , you dont't have and updateTodo or remove Todo function yet.
+
+# if u can write a function , that takes this state as an input and create the output on right , that is much powerful than original approach 
+
+`
+{
+    {
+        id:1,
+        title:"Go to gym",
+        description:"Go to gym at 7:30pm"
+    },
+    {
+        id:2,
+        title:"Go to college",
+        description:"Go to college at 9:00am"
+    }
+}
+`
+
+# now we have the state from backend which hold the all tods and a frontend if there would be a libery that's help to runder the js in html it would be nice
+
+
+# Vartual DOM
