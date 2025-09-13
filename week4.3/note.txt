@@ -1,0 +1,9 @@
+what is database ?
+Databases usually allow access to 4 primitives
+
+1.Create Data
+2.Read Data
+3.Update Data
+4.Delete Data
+
+//Define a Scehma
