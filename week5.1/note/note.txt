@@ -1,0 +1,26 @@
+Jsx,  static vs dynamic websites, State, components, re-rendering, 
+
+#for dynamic websites react liberays help very much for dom manupulation
+
+#three important things in react:
+1.components
+2.state
+3.rendering
+
+#state:
+an object that represents the current state of the app,
+it represents the dynamic things in your app(things that change) 
+For exmaple, the value of the counter
+
+#components:
+how a dom element should render, given a state,
+it is a re-useable, dynamic, HTML snippet that changes given the state
+
+#rendering:
+changes the dom element
+a re-render represents the actual DOM being manipulated when the state change
+
+# after u decleare a state varible react is automatically update the dom according to the state.
+
+#jsx is the js + xml 
+ 
