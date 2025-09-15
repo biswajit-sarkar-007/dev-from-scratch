@@ -1,7 +1,7 @@
 const moongose = require("mongoose")
  
 
-moongose.connect("mongodb+srv://biswajitsarkardev_db_user:7VVkDlKmAVIez8xM@cluster0.pgluk0n.mongodb.net/todo_app")
+moongose.connect("yourr-mongodb-url")
 
 const todoSchema =  moongose.Schema({
     title: String,
@@ -14,5 +14,5 @@ const todo = moongose.model("todos", todoSchema)
 module.exports =  {
      todo
 }
-
+  
  

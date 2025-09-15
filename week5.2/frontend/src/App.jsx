@@ -1,9 +1,7 @@
-import { useState } from 'react'
- 
-import { CreateTodo } from './components/CreateTodo'
-import { Todos } from './components/Todos'
+import { useState } from "react";
+import { CreateTodo } from "./components/CreateTodo";
+import { Todos } from "./components/Todos";
 
- 
 function App() {
   const [todos, setTodos] = useState([]);
 
@@ -17,9 +15,8 @@ function App() {
     <div>
       <CreateTodo></CreateTodo>
       <Todos todos={todos}></Todos>
-      
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

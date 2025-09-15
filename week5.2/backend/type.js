@@ -1,3 +1,5 @@
+// good for input validation
+
 const z = require("zod");
 
 const createTodo = z.object({
@@ -12,4 +14,4 @@ const updateTodo = z.object({
 module.exports = {
     createTodo:createTodo,
     updateTodo:updateTodo
-}
+}   

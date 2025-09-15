@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export function CreateTodo(props) {
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -55,8 +56,9 @@ export function CreateTodo(props) {
           });
         }}
       >
-        Add a todo
+        Add more todo
       </button>
+    
     </div>
   );
 }

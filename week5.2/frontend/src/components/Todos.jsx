@@ -8,11 +8,11 @@ export function Todos({ todos }) {
             <h1>{todo.title}</h1>
             <h2>{todo.description}</h2>
             <button>
-              {todo.completed == true ? "Completed" : "Mark as Complete"}
+              {todo.completed == true ? "Completed" : "Mark Complete"}
             </button>
           </div>
         );
       })}
     </div>
-  );
+  );   
 }

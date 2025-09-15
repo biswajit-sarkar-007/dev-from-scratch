@@ -6,14 +6,17 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+app.use(cors()); // server and client common error CORS
+
+
+
 
 app.get("/todos", async function (req, res) {
   const todos = await todo.find({});
   res.json({
     todos,
   });
-});
+});   
 
 app.post("/todo", async function (req, res) {
   const createPayload = req.body;
@@ -24,7 +27,7 @@ app.post("/todo", async function (req, res) {
     });
     return;
   }
-  // db setup
+  // mongodb config   
   await todo.create({
     title: createPayload.title,
     description: createPayload.description,
@@ -34,6 +37,8 @@ app.post("/todo", async function (req, res) {
     msg: "Todo created.",
   });
 });
+
+
 
 app.put("/complete",async function (req, res) {
   const updatePayload = req.body;
@@ -55,5 +60,7 @@ app.put("/complete",async function (req, res) {
     msg:"Your todo is completd."
   })
 });
+
+
 
 app.listen(3000);
