@@ -1,0 +1,19 @@
+# React returns, re-rendering, key, Wrapper components,
+useEffect, useMemo, useCallback, useRef,
+Prop Drilling
+
+# A component can only return a single
+top level xml
+Why?
+1. Makes it easy to do reconciliation 
+
+
+# minimize the re rendering
+--> push the state to the down
+
+# You want to minimise the number of re-renders to make a highly optimal react app
+The more the components that are getting re-rendered, the worse
+
+# Use React.memo
+meme lets u skip re-rendering
+
