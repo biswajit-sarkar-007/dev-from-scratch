@@ -1,0 +1,7 @@
+# 1.useState:
+Let's you describe the state of your app Whenever state updates , it triggers a re-render which finally results in a DOM update.
+
+Code: `const [count, setCount] = useState([])`
+
+#useEffect:
+it allow u to perfrom side effects in function components, side effects are operations that can affect other components or can't be done during rendering.
