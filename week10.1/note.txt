@@ -1,0 +1,25 @@
+### Types of databases:
+
+1.NoSQL: mongoose
+2.SQL:MySQL, Postgrese
+
+### NoSQL
+ - is shcemaless and user can updated anything to databases,
+
+### SQL
+ - its define your schema
+ - update the schema as your app chnage and perfrom migrate
+
+ 
+### psql
+is a terminal-based frontend-end to postgresql. it provides a interactive commend line interface to Postgrese.
+
+### pg
+node js -> db
+
+### creating a databases and define its schema
+
+
+[] thanks to ORM now days we did not have used to write pure SQL languge 
+
+[] connection string:  postgresql://username:password@host/database
