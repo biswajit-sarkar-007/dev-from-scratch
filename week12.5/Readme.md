@@ -4,13 +4,13 @@
 
 ### some reason why we used ORM:
 
-- 1.  Simpler syntax (converts objects to SQL queries under the hood)
+- Simpler syntax (converts objects to SQL queries under the hood)
 
-- 2.  Abstraction that lets you flip the database you are using. Unified API irrespective of the DB
+- Abstraction that lets you flip the database you are using. Unified API irrespective of the DB
 
-- 3.  Type safety/Auto completion
+- Type safety/Auto completion
 
-- 4.  Automatic migrations
+- Automatic migrations
 
 ### what is prisma?
 
