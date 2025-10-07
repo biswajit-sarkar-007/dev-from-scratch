@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-function  page() {
-  return (
-    <div> this is signin page </div>
-  )
+function page() {
+  return <div> this is signin page from this side </div>;
 }
 
-export default  page
+export default page;

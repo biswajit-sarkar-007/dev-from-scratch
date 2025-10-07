@@ -1,9 +1,9 @@
-import Image from "next/image";
+ 
 
 export default function Home() {
   return (
    <div>
-    hi i am biswa
+    hi i am biswa from this side
    </div>
   );
 }
