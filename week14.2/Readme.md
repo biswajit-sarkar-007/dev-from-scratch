@@ -32,6 +32,7 @@ export default async function Home() {
     </div>
   );
 }
+
 `
 
 app/api/user/roue.ts:
@@ -42,8 +43,7 @@ export function GET() {
         "name":"biswajit",
         "email":"biswa@gmail.com",
         "state":"westbengal",
-        "houseNumber":"411"
-        
+        "houseNumber":"411"      
     })
 }
 
@@ -66,3 +66,38 @@ The benefits of using NextJS for backend includes -
 
 ### Database
 
+all steps are same for prisma in React 
+
+
+
+####   define schema
+
+`
+
+model User {
+  id        Int     @id  @default(autoincrement())
+  username  String  @unique
+  password  String
+}
+
+`
+
+[] finishing tht signup endpoint rote for POST reques
+
+
+
+`
+
+export async function POST(req: NextRequest) {
+    const body = await req.json();
+    const user = await client.user.create({
+        data: {
+            username: body.username,
+            password: body.password
+        }
+    });
+    console.log(user.id);
+    return NextResponse.json({ message: "Signed up" });
+}
+
+`
