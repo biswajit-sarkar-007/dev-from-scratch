@@ -14,7 +14,7 @@ You should fetch the user details on the server side and pre-render the page bef
 
 *nextjs now supports async components*
 
-`
+```
 import axios from "axios";
 
 async function getUserDetails() {
@@ -33,11 +33,11 @@ export default async function Home() {
   );
 }
 
-`
+```
 
 app/api/user/roue.ts:
 
-`
+```
 export function GET() {
     return Response.json({
         "name":"biswajit",
@@ -47,7 +47,7 @@ export function GET() {
     })
 }
 
-`
+```
 
 
 
@@ -72,7 +72,7 @@ all steps are same for prisma in React
 
 ####   define schema
 
-`
+```
 
 model User {
   id        Int     @id  @default(autoincrement())
@@ -80,13 +80,13 @@ model User {
   password  String
 }
 
-`
+```
 
 [] finishing tht signup endpoint rote for POST reques
 
 
 
-`
+```
 
 export async function POST(req: NextRequest) {
     const body = await req.json();
@@ -100,4 +100,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: "Signed up" });
 }
 
-`
+```
