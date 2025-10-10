@@ -141,24 +141,26 @@ Attach them to the same network
  
 inside your project at first ,
 
- - Build the image
+ - 1.Build the image
 
  > docker build -t image_tag .
 
- - Create a network
+ - 2.Create a network
 
  > docker network create my_custom_network
 
- - Start the *backend process* with the *network* attached to it
+ - 3.Start the *backend process* with the *network* attached to it
+
  > docker run -d -p 3000:3000 --name backend --network my_custom_network image_tag
 
- - Start mongo on the same network
+ - 4.Start mongo on the same network
 
  > docker run -d -v volume_database:/data/db --name mongo --network my_custom_network -p 27017:27017 mongo
 
- > Check the logs to ensure the db connection is successful
+ - 5.Check the logs to ensure the db connection is successful
 
  > docker logs <container_id>
+
 
 1. Try to visit an endpoint and ensure you are able to talk to the database
 
@@ -166,9 +168,9 @@ inside your project at first ,
  
 #### Types of networks
 
- - Bridge: The default network driver for containers. When you run a container without specifying a network, it's attached to a bridge network. It provides a private internal network on the host machine, and containers on the same bridge network can communicate with each other.
+ - 1.Bridge: The default network driver for containers. When you run a container without specifying a network, it's attached to a bridge network. It provides a private internal network on the host machine, and containers on the same bridge network can communicate with each other.
 
- - Host: Removes network isolation between the container and the Docker host, and uses the host's networking directly. This is useful for services that need to handle lots of traffic or need to expose many ports.
+ - 2.Host: Removes network isolation between the container and the Docker host, and uses the host's networking directly. This is useful for services that need to handle lots of traffic or need to expose many ports.
  
  
 
