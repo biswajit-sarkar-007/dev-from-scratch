@@ -35,8 +35,11 @@ For eg - A codebase which has a Golang service and a JS service
 #### Common monorepo frmaework in Node.js
 
 1.Lerna - https://lerna.js.org/
+
 2.nx - https://github.com/nrwl/nx
+
 3.Turborepo - https://turbo.build/ — Not exactly a monorepo framework
+
 4.Yarn/npm workspaces - https://classic.yarnpkg.com/lang/en/docs/workspaces/
  
 We’ll be going through turborepo since it’s the most relevant one today and provides more things (like build optimisations) that others don’t
