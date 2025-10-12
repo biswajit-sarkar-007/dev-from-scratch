@@ -74,9 +74,59 @@ The key feature of TurboRepo is its ability to manage and optimize the execution
 
 ### let's initialize a simple Turborepo
 
+ > npx create-turbo@latest
+
+### Explore the folder structure
+
+There are 5 modules in our project
+
+#### End user apps (websites/core backend)
+
+ - apps/web - A Next.js website
+
+ - apps/docs - A Docs website that has all the documentation related to your project
+
+#### Helper packages
+
+ - packages/ui - UI packages 
+
+ - packages/typescript-config - Shareable TS configuration
+
+ - packages/eslint-config - Shareable ESLine configuration 
  
+### Let's try to run the project 
+
+ > npm i (on the top level of project)
+
+ > npm run dev (on the top level of project)
+
+ 
+You will notice two websites running on 
+
+ - 1.localhost:3000
+
+ - 2.localhost:3001
+
+This means we have a single *repo* which has multiple *projects* which share code from *packages/ui*
+
+[] *turbo build* goes into all packages and apps and runs *npm run build* inside them (provided they have it)
+
+Same for *dev* and *lint*
+ 
+### Exploring *apps/web*
+
+#### 1. Dependencies
+
+It is a simple next.js app. But it uses some *UI components* from the *packages/ui* module
+
+#### 2. Exploring package.json
+
+If you explore package.json of *apps/web* , you will notice *@repo/ui* as a dependency
+
+#### 3. Exploring page.tsx
+
+This is a very big page, let’s try to see the import and usage of the *Button* component
 
 
- 
+The same *Button* component can be used by the *apps/docs* website as well
 
- 
