@@ -133,3 +133,21 @@ This is a very big page, let’s try to see the import and usage of the *Button*
 
 The same *Button* component can be used by the *apps/docs* website as well
 
+
+
+### what the differnece between monorepo and terborepo
+
+in monorepo is a single repository where the frontend, backend, ui, any other app will be stored and they are used
+ eg-yarn workspaces/lerna
+ 
+ 
+in terborepo
+ when we use *turbo build* commend
+
+  - 1.I call things paralelly
+
+  - 2.If things are dependent on each other, I first call the child and then the parent
+
+  - 3.I cache the outputs of the builds
+
+[] You can added react-project and nodejs-project top of your apps folder and in package.json exports it  
