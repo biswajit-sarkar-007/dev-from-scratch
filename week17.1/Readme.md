@@ -1,6 +1,6 @@
-### Advanced Paytm project part 1
+# Advanced Paytm project part 1
 
-##### Points
+### Points
 
 1.Where to start - Feature planning
 
@@ -47,12 +47,12 @@
    1.Depends on the size of the company. For a startup, whatever helps you move fast w/o tech debt. For a company there are a lot of layers of review to go through
  
  
-### Feature planning
+# Feature planning
 
 comming soon...
 
 
-### Stack
+# Stack
 
 1.Frontend and Backend - Next.js (or Backend)
 
@@ -68,7 +68,7 @@ comming soon...
 
 
 
-### Bootstrape the app
+# Bootstrape the app
 
 1.Init turborepo
 
@@ -126,7 +126,7 @@ step iii: Update **global css**
 
 
 
-### Adding prisma
+# Adding prisma
 
 1.Create a new **db** folder
 
@@ -238,7 +238,7 @@ export const GET = async () => {
 
 
 
-### Add a recoil/store module
+# Add a recoil/store module
 
  - Create store package
 
@@ -278,20 +278,13 @@ npx tsc --init
 {
   "name": "@repo/store",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "private": true,
   "dependencies": {
     "recoil": "^0.7.7"
   },
   "exports": {
-    "./useBalance": "./src/hooks/useBalance"
-}
+    "./balance": "./src/hooks/useBalance"
+  }
 }
 
 
@@ -335,7 +328,370 @@ React’s useState → Local to a single component.
 Recoil’s atom → Global and can be shared across multiple components.
 
 
+# Import recoil in the next.js apps 
+
  
+
+ - Install recoil in them
+
+ > npm i recoil
+
+ - Add a **providers.tsx** file
+
+```
+
+"use client"
+import { RecoilRoot } from "recoil";
+
+export const Providers = ({children}: {children: React.ReactNode}) => {
+    return <RecoilRoot>
+        {children}
+    </RecoilRoot>
+}
+
+```
+
+ - Update layout.tsx
+
+```
+ return (
+    <html lang="en">
+      <Providers>
+        <body className={inter.className}>{children}</body>
+      </Providers>
+    </html>
+  );
+
+```
+
+
+- Create a simple client component and try using the **useBalance** hook in there
+
+ 
+
+```
+
+"use client";
+
+import { useBalance } from "@repo/store/useBalance";
+
+export default function() {
+  const balance = useBalance();
+  return <div>
+    hi there {balance}
+  </div>
+}
+
+```
+
+# Add next-auth
+
+
+### Database
+
+Update the database schema
+
+```
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  email       String?  @unique
+  name        String? 
+  number      String  @unique
+  password    String
+}
+
+// Merchant and AuthType added new
+model Merchant {
+  id          Int     @id @default(autoincrement())
+  email       String  @unique
+  name        String?
+  auth_type   AuthType   
+}
+
+enum AuthType {
+  Google
+  Github
+}
+
+```
+
+### User-app
+
+ - Go to apps/user-app 
+
+ - Initialize next-auth
+
+ > npm install next-auth
+
+ - Initialize a simple next auth config in **lib/auth.ts**
+
+```
+
+import db from "@repo/db/client";
+import CredentialsProvider from "next-auth/providers/credentials"
+import bcrypt from "bcrypt";
+
+export const authOptions = {
+    providers: [
+      CredentialsProvider({
+          name: 'Credentials',
+          credentials: {
+            phone: { label: "Phone number", type: "text", placeholder: "1231231231" },
+            password: { label: "Password", type: "password" }
+          },
+          // TODO: User credentials type from next-aut
+          async authorize(credentials: any) {
+            // Do zod validation, OTP validation here
+            const hashedPassword = await bcrypt.hash(credentials.password, 10);
+            const existingUser = await db.user.findFirst({
+                where: {
+                    number: credentials.phone
+                }
+            });
+
+            if (existingUser) {
+                const passwordValidation = await bcrypt.compare(credentials.password, existingUser.password);
+                if (passwordValidation) {
+                    return {
+                        id: existingUser.id.toString(),
+                        name: existingUser.name,
+                        email: existingUser.number
+                    }
+                }
+                return null;
+            }
+
+            try {
+                const user = await db.user.create({
+                    data: {
+                        number: credentials.phone,
+                        password: hashedPassword
+                    }
+                });
+            
+                return {
+                    id: user.id.toString(),
+                    name: user.name,
+                    email: user.number
+                }
+            } catch(e) {
+                console.error(e);
+            }
+
+            return null
+          },
+        })
+    ],
+    secret: process.env.JWT_SECRET || "secret",
+    callbacks: {
+        // TODO: can u fix the type here? Using any is bad
+        async session({ token, session }: any) {
+            session.user.id = token.sub
+
+            return session
+        }
+    }
+  }
+ 
+```
+
+ - Create a **/api/auth/[...nextauth]/route.ts**
+
+```
+
+import NextAuth from "next-auth"
+
+import { authOptions } from "../../../../lib/auth"
+
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }
+
+```
+
+- Update .env
+
+```
+JWT_SECRET=my-jwt-secret
+NEXTAUTH_URL=http://localhost:3001
+
+```
+
+ - Ensure u see a signin page at http://localhost:3001/api/auth/signin
+
+
+ 
+### Merchant-app
+
+ - Create **lib/auth.ts**
+
+```
+
+import GoogleProvider from "next-auth/providers/google";
+import db from "@repo/db/client";
+
+export const authOptions = {
+    providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID || "",
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET || ""
+        })
+    ],
+    callbacks: {
+      async signIn({ user, account }: {
+        user: {
+          email: string;
+          name: string
+        },
+        account: {
+          provider: "google" | "github"
+        }
+      }) {
+        console.log("hi signin")
+        if (!user || !user.email) {
+          return false;
+        }
+
+        await db.merchant.upsert({
+          select: {
+            id: true
+          },
+          where: {
+            email: user.email
+          },
+          create: {
+            email: user.email,
+            name: user.name,
+            auth_type: account.provider === "google" ? "Google" : "Github"  
+          },
+          update: {
+            name: user.name,
+            auth_type: account.provider === "google" ? "Google" : "Github"  
+          }
+        });
+
+        return true;
+      }
+    },
+    secret: process.env.NEXTAUTH_SECRET || "secret"
+  }
+
+```
+
+
+ - Create a **/api/auth/[...nextauth]/route.ts**
+
+```
+
+import NextAuth from "next-auth"
+
+import { authOptions } from "../../../../lib/auth"
+
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }
+
+```
+
+ - Put your google client and secret in .env of the merchant app. 
+
+Ref https://next-auth.js.org/providers/google
+
+```
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=my-jwt-secrect
+
+```
+
+Ensure u see a signin page at http://localhost:3000/api/auth/signin
+
+Try signing in and make sure it reaches the DB
+ 
+
+# Add auth
+
+### Client side
+
+ - Wrap the apps around **SessionProvider** context from the next-auth package
+
+[] SessionProvider in NextAuth.js is a React Context provider designed to make session data available throughout your application's client-side components.
+
+ - Go to merchant-app/providers.tsx
+
+```
+
+"use client"
+import { RecoilRoot } from "recoil";
+import { SessionProvider } from "next-auth/react";
+
+export const Providers = ({children}: {children: React.ReactNode}) => {
+    return <RecoilRoot>
+        <SessionProvider>
+            {children}
+        </SessionProvider>
+    </RecoilRoot>
+}
+
+```
+
+ - Do the same for user-app/providers.tsx
+ 
+ - Server side
+
+Create apps/user-app/app/api/user/route.ts
+
+```
+
+import { getServerSession } from "next-auth"
+import { NextResponse } from "next/server";
+import { authOptions } from "../../lib/auth";
+
+export const GET = async () => {
+    const session = await getServerSession(authOptions);
+    if (session.user) {
+        return NextResponse.json({
+            user: session.user
+        })
+    }
+    return NextResponse.json({
+        message: "You are not logged in"
+    }, {
+        status: 403
+    })
+}
+
+```
+Ensure login works as exptected
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
 
 
 

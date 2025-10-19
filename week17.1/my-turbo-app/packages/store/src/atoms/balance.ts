@@ -1,4 +1,5 @@
-import  { atom } from "recoil";
+
+import { atom } from "recoil";
 
 export const balanceAtom = atom<number>({
     key: "balance",
