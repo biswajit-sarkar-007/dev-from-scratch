@@ -1072,14 +1072,74 @@ model p2pTransfer {
 
 ```
 
+# Added CI in our project
 
 
+### Continuous Integration
+
+Continuous Integration (CI) is a development practice where developers frequently integrate their code changes into a shared repository, preferably several times a day. Each integration is automatically verified by 
+
+ - 1.Building the project and 
+
+ - 2.Running automated tests. 
+
+This process allows teams to detect problems early, improve software quality, and reduce the time it takes to validate and release new software updates.
+
+[x] For Github, you can add all your pipelines to .github/workflows
+
+[x] Make sure that whenever someone tries to create a PR, we build the project and make sure that it builds as expected
 
 
+### Lets add a build pipeline for our repo
 
+Anytime a user creates a PR, we need to run **npm run build** and only if it succeeds should the workflow succeed
 
-
+ - fork any repo 
  
+ - Add .github/workflows/build.yml  in the root folde
+
+ - Create the workflow
+
+```
+name: Build on PR
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: Generate prisma client
+        run: npm run db:generate
+        
+      - name: Run Build
+        run: npm run build
+
+```
+
+and then added this inside package.json script tag
+
+ >  "db:generate": "cd packages/db && npx prisma generate && cd ../.."
+
+
+ - Push this to master branch
+
+ - Create a new branch with some minimal changes and create a PR from it
+
+ - You should see the workflow run
+
 
 
 
