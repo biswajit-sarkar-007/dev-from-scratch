@@ -1,4 +1,4 @@
-# Advanced Paytm project  
+# Advanced Paytm project   this contain week17 and week18
 
 ### Points
 
@@ -896,9 +896,181 @@ app.listen(3003);
 
 ```
 
+##  
+
+```
+
+ <Button onClick={async () => {  await p2pTransfer(number, Number(amount) * 100)}}>Send</Button>
+
+```
+
+
+
+### create lib/action
+
+under crearte 
+
+1.createOnRamption.ts
+
+```
+
+ "use server";
+
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth";
+import prisma from "@repo/db/client";
+
+export async function createOnRampTransaction(
+  amount: number,
+  provider: string
+) {
+  const session = await getServerSession(authOptions);
+  const token = Math.random().toString();
+
+  const userId = session.user.id;
+
+  if (!userId) {
+    return {
+      message: "User not logged in",
+    };
+  }
+
+  await prisma.onRampTransaction.create({
+    data: {
+      userId:Number(userId),
+      amount: amount,
+      status: "Processing",
+      provider,
+      startTime: new Date(),
+      token: token,
+    }
+  });
+
+  return {
+    mesg:"On ramp transction added!"
+  }
+}
+
+
+```
  
 
+#### added lock in p2pTransfer
 
+```
+        await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
+
+```
+
+
+/user-app/app/(dashboard)/p2p/page.tsx
+
+```
+import { SendCard } from "../../../components/SendCard"
+
+export default () =>{
+    return(
+        <div className="w-full">
+        
+        <SendCard/>
+        
+        </div>
+    )
+}
+
+```
+
+/app/lib/actions/p2pTransfer.tsx
+
+```
+"use server"
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth";
+import prisma from "@repo/db/client";
+
+export async function p2pTransfer(to: string, amount: number) {
+    const session = await getServerSession(authOptions);
+    const from = session?.user?.id;
+    if (!from) {
+        return {
+            message: "Error while sending"
+        }
+    }
+    const toUser = await prisma.user.findFirst({
+        where: {
+            number: to
+        }
+    });
+
+    if (!toUser) {
+        return {
+            message: "User not found"
+        }
+    }
+    await prisma.$transaction(async (tx) => {
+        await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
+
+        const fromBalance = await tx.balance.findUnique({
+            where: { userId: Number(from) },
+          });
+          if (!fromBalance || fromBalance.amount < amount) {
+            throw new Error('Insufficient funds');
+          }
+
+          await tx.balance.update({
+            where: { userId: Number(from) },
+            data: { amount: { decrement: amount } },
+          });
+
+          await tx.balance.update({
+            where: { userId: toUser.id },
+            data: { amount: { increment: amount } },
+          });
+         
+          await tx.p2pTransfer.create({
+            data: {
+                fromUserId: Number(from),
+                toUserId: toUser.id,
+                amount,
+                timestamp: new Date()
+            }
+          })
+    });
+}
+
+```
+
+/schema.prima
+
+added this entery to the db
+
+
+```
+
+model User {
+  id                Int                 @id @default(autoincrement())
+  email             String?             @unique
+  name              String?
+  number            String              @unique
+  password          String
+  onRampTransaction onRampTransaction[]
+  Balance           Balance[]
+  sentTransfers     p2pTransfer[]       @relation(name: "FromUserRelation")
+  receivedTransfers p2pTransfer[]       @relation(name: "ToUserRelation")
+}
+
+
+model p2pTransfer {
+  id         Int      @id @default(autoincrement())
+  amount     Int
+  timestamp  DateTime
+  fromUserId Int
+  fromUser   User     @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId   Int
+  toUser     User     @relation(name: "ToUserRelation", fields: [toUserId], references: [id])
+}
+
+```
 
 
 
