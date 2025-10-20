@@ -1,11 +1,11 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "plugins": [{ "name": "next" }],
+    "baseUrl": ".",              // <-- important
+    "paths": {
+      "@repo/*": ["../../packages/*/src"]  // <-- map monorepo packages
+    }
   },
   "include": [
     "next-env.d.ts",
