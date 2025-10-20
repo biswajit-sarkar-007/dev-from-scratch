@@ -834,10 +834,11 @@ npx prisma generate
  > "@repo/db": "*"
 
  
+[]index.ts
 
-Add transaction to update the balance and transactions DB
-Ref - https://www.prisma.io/docs/orm/prisma-client/queries/transactions
-import express from "express";
+ ```
+
+ import express from "express";
 import db from "@repo/db/client";
 const app = express();
 
@@ -893,14 +894,9 @@ app.post("/hdfcWebhook", async (req, res) => {
 
 app.listen(3003);
 
+```
+
  
-Paytm Project
-15 of 20
-
-user_profile_image
-
-
-
 
 
 
