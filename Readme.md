@@ -399,30 +399,66 @@ This repository chronicles my journey through full-stack web development, starti
 - Type safety benefits
 - Migration strategies
 
-#### [Week 12.3.1](./week12.3.1) - Advanced TypeScript
-- Generics and constraints
-- Advanced types
-- Type inference
+#### [Week 12.3.1](./week12.3.1) - Monorepo Basics
+- Creating custom npm packages
+- Publishing packages to npm
+- Using own packages: `npm i @biswa007/common1`
+- Common folder structure for shared code
+- Package management in monorepos
 
-#### [Week 12.3.2](./week12.3.2) - TypeScript Patterns
-- Design patterns in TS
-- Decorators
-- Advanced configurations
+#### [Week 12.3.2](./week12.3.2) - Docker Basics
+- What is Docker and containerization
+- Running applications in containers
+- Running packages in isolated environments (Mongo, Postgres)
+- Docker registries (similar to GitHub for images)
+- Common Docker commands: `docker run`, `docker ps`, `docker kill`
+- Port mapping: `-p 27017:27017`
+- Detached mode: `-d` flag
+- Running MongoDB and PostgreSQL in Docker
+- Connection strings for containerized databases
 
-#### [Week 12.4](./week12.4) - TypeScript with React
-- Typed components
-- Props typing
-- Event handling
+#### [Week 12.4](./week12.4) - SQL & PostgreSQL
+- Why SQL over NoSQL (MongoDB)
+- Schemaless vs Schema-based databases
+- Problems with schemaless: inconsistent data, runtime errors
+- SQL strict schema requirements
+- Creating PostgreSQL databases (neondb, Docker)
+- Connection strings: `postgresql://username:password@host/database`
+- psql: terminal-based PostgreSQL interface
+- pg library: Node.js PostgreSQL client
+- SQL table creation and schema design
+- SQL injection vulnerabilities
+- Parameterized queries for security: `VALUES ($1, $2, $3)`
+- Relationships in SQL vs MongoDB
+- Foreign keys and table relationships
+- SQL Joins: combining data from multiple tables
 
-#### [Week 12.5](./week12.5) - TypeScript Best Practices
-- Code organization
-- Type definitions
-- Common patterns
+#### [Week 12.5](./week12.5) - Prisma ORM
+- What is an ORM and why use it
+- Simpler syntax over raw SQL
+- Database abstraction and unified API
+- Type safety and auto-completion
+- Automatic migrations
+- Prisma setup: `npx prisma init`
+- Schema design in `schema.prisma`
+- Database migrations: `npx prisma migrate dev`
+- Generating Prisma client: `npx prisma generate`
+- CRUD operations with Prisma
+- Insert: `prisma.user.create()`
+- Update: `prisma.user.update()`
+- Read: `prisma.user.findFirst()`
+- Relationships in Prisma: One-to-One, One-to-Many, Many-to-Many
+- Foreign key relationships with Prisma
 
-#### [Week 13](./week13) - TypeScript Mastery
-- Advanced type manipulation
-- Conditional types
-- Mapped types
+#### [Week 13](./week13) - Medium Clone Project
+**Project:** Building a blogging platform (Medium clone)
+- Full-stack application with React frontend
+- Backend API with Express
+- Common shared packages in monorepo structure
+- User authentication and authorization
+- Blog post CRUD operations
+- Rich text editor integration
+- Database design for blogging platform
 
 ---
 
@@ -448,15 +484,39 @@ This repository chronicles my journey through full-stack web development, starti
 - Middleware
 - Authentication in Next.js
 
-#### [Week 15.1](./week15.1) - Next.js Performance
-- Bundle optimization
-- Code splitting
-- Performance monitoring
+#### [Week 15.1](./week15.1) - Docker Deep Dive
+- Why Docker: Kubernetes, isolated environments, local project setup
+- Containerization concepts
+- Benefits: configuration in single file, isolated environments, easy local setup
+- Docker Engine: containerization technology
+- Docker CLI: command line interface
+- Docker Registry: DockerHub for images
+- Images vs Containers (GitHub code vs running process)
+- Port mapping in detail
+- Common commands: `docker images`, `docker ps`, `docker run`, `docker build`, `docker push`
+- Writing Dockerfiles
+- Base images and layered commands
+- Dockerfile instructions: FROM, WORKDIR, COPY, RUN, EXPOSE, CMD, ENV
+- Building images: `docker build -t image_name .`
+- Running containers with environment variables
+- .dockerignore for optimization
 
-#### [Week 15.2](./week15.2) - Next.js Deployment
-- Vercel deployment
-- Environment configuration
-- Production optimization
+#### [Week 15.2](./week15.2) - Docker Layers, Networks & Volumes
+- Docker layers architecture
+- Base layer and instruction layers
+- Layer caching and reusability
+- Immutable layers
+- Optimizing Dockerfiles for layer caching
+- Copying package files before source code
+- Docker Volumes: persisting data across restarts
+- Creating volumes: `docker volume create`
+- Mounting volumes: `-v volume_name:/data/db`
+- Docker Networks: container communication
+- Creating networks: `docker network create`
+- Attaching containers to networks
+- Bridge vs Host network types
+- Container-to-container communication
+- Removing port mappings for internal services
 
 ---
 
@@ -472,15 +532,36 @@ This repository chronicles my journey through full-stack web development, starti
 - Dependency graph management
 - Workspace organization
 
-#### [Week 16.2](./week16.2) - Monorepo Patterns
-- Package management
-- Shared configurations
-- Cross-package dependencies
+#### [Week 16.2](./week16.2) - Authentication with Cookies
+- Authentication process: signup/signin
+- Cookies vs LocalStorage for authentication
+- What are cookies: small data pieces stored by browser
+- Cookie use cases: session management, personalization, tracking, security
+- Why cookies over LocalStorage:
+  - Automatically sent with every request
+  - Can have expiry dates
+  - Can be restricted to HTTPS and specific domains
+- Types of cookies: Persistent, Session, Secure
+- Cookie properties: HttpOnly, SameSite (Strict/Lax/None), Domains
+- CSRF attacks and SameSite protection
+- No need to manually set Authorization headers
 
-#### [Week 16.3](./week16.3) - Turborepo Advanced
-- Custom pipelines
-- Remote caching
-- CI/CD integration
+#### [Week 16.3](./week16.3) - NextAuth.js
+- What is NextAuth: authentication library for Next.js
+- External providers: Auth0, Clerk, Firebase
+- In-house authentication with cookies
+- NextAuth providers support
+- Setting up NextAuth: `/api/auth/[...nextauth]/route.ts`
+- Installing NextAuth: `npm install next-auth`
+- Three types of providers:
+  - OAuth (Login with Google, GitHub)
+  - Email (Passwordless OTP)
+  - Credentials (Custom strategy)
+- CredentialsProvider configuration
+- GoogleProvider setup with Client ID and Secret
+- GitHubProvider setup
+- JWT callbacks and session management
+- Environment variables for OAuth credentials
 
 #### [Week 17](./week17) -  Advanced Paytm Clone (Production-Grade)
 **Major Project:** Full-featured payment application with enterprise patterns
