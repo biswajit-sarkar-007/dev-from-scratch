@@ -52,146 +52,261 @@ This repository chronicles my journey through full-stack web development, starti
 ### **Phase 1: Foundations (Weeks 1-2)**
 
 #### [Week 1.2](./week1.2) - JavaScript Fundamentals
-- Core JavaScript concepts
-- ES6+ features
-- Basic programming constructs
+- Compiled vs Interpreted languages (C++ vs JS)
+- Static vs Dynamic languages
+- Single-threaded nature of JavaScript
+- Simple primitives: variables (let, var, const), data types (string, boolean, number)
+- Complex primitives: arrays and objects
+- Array of objects pattern
+- Functions: arguments, return values, callbacks
+- setTimeout and setInterval
 
-#### [Week 1.3](./week1.3) - Advanced JavaScript
-- Functions and scope
-- Closures and hoisting
-- Object-oriented programming
+#### [Week 1.3](./week1.3) - String Methods & Parsing
+- String operations: length, indexOf, lastIndexOf
+- String manipulation: slice, substring, replace
+- String utilities: split, trim, toUpperCase, toLowerCase
+- parseInt for string to integer conversion
+- Practical string handling exercises
 
-#### [Week 1.4](./week1.4) - JavaScript Deep Dive
-- Prototypes and inheritance
-- Advanced array methods
-- Error handling
+#### [Week 1.4](./week1.4) - Loops, Functions & Callbacks
+- For loops for repeated logic
+- Function declaration and function calls
+- DRY principle (Don't Repeat Yourself)
+- Callback functions: calling functions inside functions
+- Function composition patterns
 
-#### [Week 1.5](./week1.5) - Async JavaScript
-- Callbacks and promises
-- Async/await patterns
-- Event loop understanding
+#### [Week 1.5](./week1.5) - Async JavaScript & Promises
+- Synchronous vs Asynchronous execution
+- Context switching and parallel operations
+- Async functions: setTimeout, fs.read, fetch
+- Anonymous functions
+- Promises: pending, resolve, reject states
+- Promise as a wrapper over async operations
+- Async/await syntax
+- Callback hell and solutions
 
 ---
 
 ### **Phase 2: Backend Development (Weeks 2-4)**
 
-#### [Week 2.1](./week2.1) - Node.js Introduction
-- Node.js runtime environment
-- NPM and package management
-- Building basic servers
+#### [Week 2.1](./week2.1) - Async Functions Deep Dive
+- JavaScript's synchronous default behavior
+- Tasks requiring wait: file reading, network requests, timeouts
+- Promises as syntactical sugar for async operations
+- More readable async code patterns
+- Understanding callback hell
+- Practical async function implementations
 
-#### [Week 2.2](./week2.2) - Express.js Framework
-- Express setup and routing
-- Middleware concepts
-- RESTful API design
+#### [Week 2.2](./week2.2) - Node.js Runtime & HTTP Protocol
+- ECMAScript and JavaScript relationship
+- V8 engine: JavaScript compiler
+- HTTP protocol: frontend-backend communication
+- Browser request lifecycle: URL parsing, DNS lookup, connection establishment
+- DNS resolution and IP mapping
+- HTTP methods: GET, POST, PUT, DELETE
+- HTTP status codes: 200, 404, 403, 500
+- Express library for HTTP server creation
 
-#### [Week 2.3 & 2.4](./week2.3%20&%20week2.4) - HTTP & APIs
-- HTTP methods and status codes
-- Request/response handling
-- API best practices
+#### [Week 2.3 & 2.4](./week2.3&week2.4) - Bash & Terminal Commands
+- Terminal as an interface for machine operations
+- Essential commands: pwd, cd, ls, mkdir, touch
+- File operations: cat, vi, mv, cp
+- Node ecosystem: nvm (Node Version Manager), npm (Node Package Manager)
+- Running JavaScript locally with node
+- Git basics and version control
+- clear command for terminal cleanup
 
-#### [Week 2.5](./week2.5) - Advanced Express
-- Error handling middleware
-- Authentication basics
-- Route organization
+#### [Week 2.5](./week2.5) - Express Basics & HTTP Examples
+- Express.js fundamentals
+- Creating HTTP servers with Express
+- Route handling and request processing
+- Practical HTTP endpoint examples
+- Request and response objects
 
-#### [Week 2.6](./week2.6) - Backend Patterns
-- MVC architecture
-- Code organization
-- Best practices
+#### [Week 2.6](./week2.6) - Array Methods & Functional Programming
+- Arrow functions vs regular functions
+- Array.map(): transforming arrays
+- Creating custom map function
+- Array.filter(): filtering elements
+- Functional programming patterns
+- Callback functions in array methods
+- Practical array manipulation exercises
 
-#### [Week 3.1](./week3.1) - Database Fundamentals
-- Database concepts
-- SQL basics
-- Data modeling
+#### [Week 3.1](./week3.1) - Middlewares & Input Validation
+- Express middleware concept
+- Request validation using headers and query params
+- Middleware chaining with next()
+- Request counting middleware
+- express.json() for parsing JSON bodies
+- Global error catching middleware
+- Zod library for input validation
+- Schema validation with zod.array() and zod.object()
+- Email and password validation patterns
+- Error handling with try-catch
 
-#### [Week 3.2](./week3.2) - MongoDB Introduction
-- NoSQL concepts
-- MongoDB CRUD operations
-- Document-based databases
+#### [Week 3.2](./week3.2) - JWT Authentication
+- Hashing, Encryption, and JSON Web Tokens
+- JWT implementation with jsonwebtoken library
+- User authentication flow
+- Token generation with jwt.sign()
+- Token verification with jwt.verify()
+- In-memory user database
+- Protected routes using JWT
+- Decoding and verifying tokens
+- Authentication middleware patterns
 
-#### [Week 3.3](./week3.3) - Mongoose ODM
-- Schema design
-- Models and queries
-- Data validation
+#### [Week 3.3](./week3.3) - Middleware Patterns
+- Creating reusable middleware functions
+- Age verification middleware example
+- Route-specific middleware application
+- Middleware for access control
+- Query parameter validation in middleware
+- Response handling in middleware
 
-#### [Week 3.4](./week3.4) - Advanced MongoDB
-- Aggregation pipelines
-- Indexing strategies
-- Performance optimization
+#### [Week 3.4](./week3.4) - JWT Deep Dive
+- JWT token generation process
+- JWT structure and components
+- Secret key for signing tokens
+- Token decoding (anyone can do)
+- Token verification (only backend can verify)
+- Try-catch error handling
+- Secure authentication patterns
 
-#### [Week 4.1](./week4.1) - Authentication & Security
-- JWT implementation
-- Password hashing
-- Security best practices
+#### [Week 4.1](./week4.1) - DOM Manipulation
+- Creating web applications without React
+- Document Object Model (DOM)
+- Browser-specific APIs: setTimeout, fetch, setInterval, document
+- ECMAScript vs Browser APIs
+- Making websites dynamic
+- DOM manipulation for content updates
+- Dynamic content rendering on scroll
 
-#### [Week 4.2](./week4.2) - Authorization
-- Role-based access control
-- Protected routes
-- Session management
+#### [Week 4.2](./week4.2) - Dynamic TODO App & State Management
+- Building production-ready TODO applications
+- Server-side TODO storage
+- Updating DOM based on server state
+- addTodo, updateTodo, removeTodo functions
+- State-driven rendering concept
+- Backend state synchronization
+- Virtual DOM introduction
+- State as single source of truth
 
-#### [Week 4.2.2](./week4.2.2) - Advanced Auth Patterns
-- OAuth integration
-- Refresh tokens
-- Security hardening
+#### [Week 4.2.2](./week4.2.2) - Vite & Modern Build Tools
+- Vite project setup
+- Modern frontend build tooling
+- Fast development server
+- Hot module replacement (HMR)
 
-#### [Week 4.3](./week4.3) - Backend Architecture
-- Scalable backend design
-- API versioning
-- Documentation
+#### [Week 4.3](./week4.3) - Database Fundamentals & MongoDB
+- What is a database?
+- CRUD operations: Create, Read, Update, Delete
+- Schema definition
+- MongoDB basics
+- Mongoose for MongoDB
+- Database design patterns
+- Assignments with MongoDB and JWT authentication
 
 ---
 
 ### **Phase 3: Frontend Development (Weeks 5-7)**
 
 #### [Week 5.1](./week5.1) - React Fundamentals
-- Components and JSX
-- Props and state
-- React ecosystem
+- JSX: JavaScript + XML syntax
+- Static vs Dynamic websites
+- React for DOM manipulation
+- Three pillars of React: Components, State, Rendering
+- State: object representing current app state
+- Components: reusable, dynamic HTML snippets
+- Re-rendering: DOM manipulation on state change
+- Automatic DOM updates with state changes
+- React app bootstrapping with create-react-app
 
-#### [Week 5.2](./week5.2) - React State Management
-- useState and useEffect
-- Component lifecycle
-- Event handling
+#### [Week 5.2](./week5.2) - Full Stack TODO Application
+**Project:** Complete TODO app with frontend and backend
+- React frontend with state management
+- Express backend with API routes
+- Creating todos
+- Viewing all todos
+- Marking todos as done
+- Frontend-backend integration
+- RESTful API design
 
-#### [Week 6.1](./week6.1) - Advanced React Patterns
-- Component composition
-- Render props
-- Higher-order components
+#### [Week 6.1](./week6.1) - React Re-rendering & Optimization
+- React returns and re-rendering
+- Key prop for list rendering
+- Wrapper components pattern
+- useEffect, useMemo, useCallback, useRef hooks
+- Prop drilling problem
+- Single top-level XML return requirement
+- Reconciliation process
+- Minimizing re-renders by pushing state down
+- React.memo for skipping re-renders
+- Building highly optimal React apps
 
-#### [Week 6.2](./week6.2) - React Router
-- Client-side routing
-- Navigation patterns
-- Route protection
+#### [Week 6.2](./week6.2) - React Hooks: useState & useEffect
+- useState: describing app state
+- State updates trigger re-renders
+- Re-renders result in DOM updates
+- Syntax: `const [count, setCount] = useState([])`
+- useEffect: performing side effects
+- Side effects in function components
+- Operations affecting other components
+- Effects that can't be done during rendering
 
-#### [Week 6.4](./week6.4) - State Management Libraries
-- Context API
-- Redux/Recoil introduction
-- Global state patterns
+#### [Week 6.4](./week6.4) - Performance Hooks
+- useMemo: memoizing expensive calculations
+- useCallback: memoizing callback functions
+- useRef: referencing DOM elements and persisting values
+- Performance optimization techniques
+- Preventing unnecessary re-renders
+- When to use each hook
 
-#### [Week 7.1](./week7.1) - React Hooks Deep Dive
-- Custom hooks
-- useContext and useReducer
-- Hook patterns
+#### [Week 7.1](./week7.1) - React Router & Context API
+- React Routing with react-router-dom
+- useNavigate hook for programmatic navigation
+- Lazy loading components
+- Props drilling problem and solutions
+- Context API for global state
+- useContext hook
+- Creating and consuming context
+- Avoiding prop drilling with context
 
-#### [Week 7.2](./week7.2) - Advanced Hooks
-- useMemo and useCallback
-- Performance optimization
-- Hook best practices
+#### [Week 7.2](./week7.2) - Recoil State Management
+- Context API limitations
+- Introduction to Recoil for state management
+- Atoms: storing state outside components
+- Atoms can be teleported to any component
+- RecoilRoot wrapper component
+- useRecoilState: reading and writing atom state
+- useRecoilValue: reading atom state only
+- useSetRecoilState: writing atom state only
+- Selectors for derived state
+- useMemo and useCallback for performance
+- Optimization best practices
 
-#### [Week 7.4](./week7.4) - React Performance
-- Code splitting
-- Lazy loading
-- Optimization techniques
+#### [Week 7.4](./week7.4) - Advanced Recoil & Performance
+- Deep dive into Recoil atoms
+- Advanced selector patterns
+- Asynchronous data queries with Recoil
+- useRecoilState for state management
+- useRecoilValue for reading state
+- useSetRecoilState for updating state
+- Code splitting strategies
+- Lazy loading components
+- React performance optimization techniques
 
 ---
 
 ### **Phase 4: Full Stack Integration (Weeks 8-9)**
 
-#### [Week 8.1](./week8.1) - Full Stack Basics
+#### [Week 8.1](./week8.1) - CSS & Responsive Design
+- Flexbox layout system
+- Responsive design principles
+- CSS colors and backgrounds
+- Grid layout system
 - Connecting frontend and backend
-- API integration
-- CORS handling
+- API integration patterns
+- CORS (Cross-Origin Resource Sharing) handling
 
 #### [Week 8.2](./week8.2) -  Paytm Clone (Basic)
 **Project:** Basic payment application with CRUD operations
@@ -200,34 +315,60 @@ This repository chronicles my journey through full-stack web development, starti
 - Database integration
 - RESTful API implementation
 
-#### [Week 8.3](./week8.3) - Deployment Basics
-- Hosting platforms
-- Environment variables
-- Production builds
+#### [Week 8.3](./week8.3) - HTTP Clients & Deployment
+- fetch API for HTTP requests
+- Axios library for HTTP requests
+- Comparison: fetch vs axios
+- Hosting platforms overview
+- Environment variables configuration
+- Production build optimization
 
-#### [Week 9.1](./week9.1) - Advanced Backend Concepts
+#### [Week 9.1](./week9.1) - React Hooks Revision
+- Comprehensive React hooks review
+- useState, useEffect, useContext patterns
+- Custom hooks creation
+- Hooks best practices
+- Common hooks pitfalls and solutions
 - Caching strategies
-- Rate limiting
-- API optimization
+- Rate limiting concepts
+- API optimization techniques
 
-#### [Week 9.2](./week9.2) - WebSockets & Real-time
-- Socket.io integration
-- Real-time communication
-- Event-driven architecture
+#### [Week 9.2](./week9.2) - TypeScript Basics
+- Introduction to TypeScript
+- Type annotations and type inference
+- Basic types: string, number, boolean
+- Interfaces and type aliases
+- Function typing
+- TypeScript configuration
+- WebSockets introduction
+- Socket.io for real-time communication
+- Event-driven architecture patterns
 
-#### [Week 9.3](./week9.3) - Testing Fundamentals
-- Unit testing
-- Integration testing
-- Test-driven development
+#### [Week 9.3](./week9.3) - TypeScript Fundamentals
+- TypeScript basics continuation
+- Type safety benefits
+- Compiling TypeScript to JavaScript
+- TypeScript with Node.js
+- TypeScript with React
+- Unit testing introduction
+- Integration testing concepts
+- Test-driven development (TDD) basics
 
 ---
 
 ### **Phase 5: Modern Stack & TypeScript (Weeks 10-13)**
 
-#### [Week 10.1.1.1](./week10.1.1.1) - ORM Introduction
-- ORM concepts
-- Database abstraction
-- Query builders
+#### [Week 10.1.1.1](./week10.1.1.1) - SQL Databases & PostgreSQL
+- Types of databases: NoSQL (Mongoose) vs SQL (MySQL, PostgreSQL)
+- NoSQL: schemaless, flexible updates
+- SQL: defined schema, migrations required
+- PostgreSQL introduction
+- psql: terminal-based PostgreSQL interface
+- pg library: Node.js to PostgreSQL connection
+- Creating databases and defining schemas
+- Connection strings: `postgresql://username:password@host/database`
+- Introduction to ORMs
+- Why ORMs are preferred over raw SQL
 
 #### [Week 10.2](./week10.2) -  Prisma ORM
 **Key Topics:**
